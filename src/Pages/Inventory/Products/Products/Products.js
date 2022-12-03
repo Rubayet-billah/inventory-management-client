@@ -41,12 +41,11 @@ const Products = () => {
                                 <td>{product.name}</td>
                                 <td className='font-bold text-primary'>${product.price}</td>
                                 <td>
-                                    <Link><button className='btn btn-accent btn-outline btn-sm'>Update</button></Link>
+                                    <Link to={`/updateproduct/${product._id}`}><button className='btn btn-accent btn-outline btn-sm'>Update</button></Link>
                                 </td>
                                 <td><button onClick={() => handleDelete(product)} className='btn btn-sm btn-outline btn-error'>Delete</button></td>
                             </tr>)
                         }
-
                     </tbody>
                 </table>
             </div>
