@@ -1,11 +1,21 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { loginUser } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
 
     const handleLogin = (data) => {
-        console.log(data)
+        const { email, password } = data;
+        loginUser(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user)
+            }).catch(err => console.log(err))
+
+
     }
     return (
         <section className='md:h-[700px] flex justify-center items-center'>
