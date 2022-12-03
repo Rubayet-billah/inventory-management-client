@@ -35,7 +35,7 @@ const AddCategories = () => {
                 <label className='text-sm'>Category Description</label>
                 <textarea className="textarea textarea-bordered w-full  mb-4 mt-2" {...register("description")} placeholder="Description"></textarea>
 
-                <input className='bg-accent hover:bg-accent-focus ease-in-out duration-200 w-full mb-4 mt-2 text-white font-semibold px-8 py-1 rounded' type="submit" value="Add Product" />
+                <input className='bg-accent hover:bg-accent-focus ease-in-out duration-200 w-full mb-4 mt-2 text-white font-semibold px-8 py-1 rounded' type="submit" value="Add Category" />
             </form>
         </div>
     );

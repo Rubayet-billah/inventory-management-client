@@ -2,15 +2,16 @@ import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 
 const AddProducts = () => {
+    const categories = useLoaderData()
     const { register, handleSubmit, formState: { errors } } = useForm()
     const imgHostKey = process.env.REACT_APP_imgbb_apikey;
     const navigate = useNavigate();
     const handleAddProduct = (data) => {
-        const { name, category, price, description } = data;
+        const { name, categoryId, price, description } = data;
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image)
@@ -22,7 +23,7 @@ const AddProducts = () => {
             .then(data => {
                 const productObj = {
                     date: format(new Date(), 'PP'),
-                    name, image: data.data.url, category, price, description
+                    name, image: data.data.url, categoryId, price, description
                 }
                 fetch('http://localhost:5000/products', {
                     method: 'POST',
@@ -52,9 +53,10 @@ const AddProducts = () => {
                 <input className='file-input file-input-sm file-input-bordered w-full mb-4 mt-2' {...register("image", { required: true })} placeholder='Image' type='file' />
 
                 <label className='text-sm'>Product Category</label>
-                <select className="select select-sm select-bordered w-full mb-4 mt-2" {...register("category", { required: true })}>
-                    <option>Mens T shirt</option>
-                    <option>Mens Sneakers</option>
+                <select className="select select-sm select-bordered w-full mb-4 mt-2" {...register("categoryId", { required: true })}>
+                    {
+                        categories.map(category => <option key={category._id} value={category._id}>{category.name}</option>)
+                    }
                 </select>
 
                 <label className='text-sm'>Product Price</label>
