@@ -9,8 +9,8 @@ const AddProducts = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const imgHostKey = process.env.REACT_APP_imgbb_apikey;
     const navigate = useNavigate();
-    const handleAddCar = (data) => {
-        const { name, category, price } = data;
+    const handleAddProduct = (data) => {
+        const { name, category, price, description } = data;
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image)
@@ -22,7 +22,7 @@ const AddProducts = () => {
             .then(data => {
                 const productObj = {
                     date: format(new Date(), 'PP'),
-                    name, image: data.data.url, category, price
+                    name, image: data.data.url, category, price, description
                 }
                 fetch('http://localhost:5000/products', {
                     method: 'POST',
@@ -34,7 +34,7 @@ const AddProducts = () => {
                     .then(result => {
                         if (result.acknowledged) {
                             toast.success('Product added successfully')
-                            navigate('/')
+                            navigate('/products')
                         }
                     })
 
@@ -44,20 +44,26 @@ const AddProducts = () => {
     return (
         <div>
             <h2 className='text-3xl text-center my-5'>Add Product Here</h2>
-            <form onSubmit={handleSubmit(handleAddCar)} className='max-w-lg mx-auto bg-gray-50 md:p-12 rounded-lg'>
-                <input className='input input-sm input-bordered w-full my-2' {...register("name", { required: true })} placeholder='Product Name' />
+            <form onSubmit={handleSubmit(handleAddProduct)} className='max-w-lg mx-auto bg-gray-50 md:p-12 rounded-lg'>
+                <label className='text-sm'>Product Name</label>
+                <input className='input input-sm input-bordered w-full mb-4 mt-2' {...register("name", { required: true })} placeholder='Product Name' />
                 {errors.name && <p className='text-red-500'>This field is required</p>}
-                <input className='file-input file-input-sm file-input-bordered w-full my-2' {...register("image", { required: true })} placeholder='Image' type='file' />
+                <label className='text-sm'>Product Image</label>
+                <input className='file-input file-input-sm file-input-bordered w-full mb-4 mt-2' {...register("image", { required: true })} placeholder='Image' type='file' />
 
-                <select className="select select-sm select-bordered w-full my-2" {...register("category", { required: true })}>
+                <label className='text-sm'>Product Category</label>
+                <select className="select select-sm select-bordered w-full mb-4 mt-2" {...register("category", { required: true })}>
                     <option>Mens T shirt</option>
                     <option>Mens Sneakers</option>
                 </select>
 
-                <input className='input input-sm input-bordered w-full my-2' {...register("price", { required: true })} placeholder='Price USD' type='number' />
+                <label className='text-sm'>Product Price</label>
+                <input className='input input-sm input-bordered w-full mb-4 mt-2' {...register("price", { required: true })} placeholder='Price USD' type='number' />
                 {errors.price && <p className='text-red-500'>This field is required</p>}
+                <label className='text-sm'>Product description</label>
+                <textarea className="textarea textarea-bordered w-full  mb-4 mt-2" {...register("description")} placeholder="Description"></textarea>
 
-                <input className='bg-accent hover:bg-accent-focus ease-in-out duration-200 w-full my-3 text-white font-semibold px-8 py-1 rounded' type="submit" />
+                <input className='bg-accent hover:bg-accent-focus ease-in-out duration-200 w-full mb-4 mt-2 text-white font-semibold px-8 py-1 rounded' type="submit" value="Add Product" />
             </form>
         </div>
     );

@@ -1,6 +1,8 @@
 import { createBrowserRouter, Route } from "react-router-dom";
 import MainLayout from "../../Layouts/MainLayout/MainLayout";
 import Home from "../../Pages/Homepage/Home/Home";
+import AddCategories from "../../Pages/Inventory/Categories/AddCategories/AddCategories";
+import Categories from "../../Pages/Inventory/Categories/Categories/Categories";
 import AddProducts from "../../Pages/Inventory/Products/AddProducts/AddProducts";
 import Products from "../../Pages/Inventory/Products/Products/Products";
 import UpdateProduct from "../../Pages/Inventory/Products/UpdateProduct/UpdateProduct";
@@ -21,8 +23,16 @@ const router = createBrowserRouter([
                 element: <Products></Products>
             },
             {
+                path: '/categories',
+                element: <Categories></Categories>
+            },
+            {
                 path: '/addproducts',
                 element: <AddProducts></AddProducts>
+            },
+            {
+                path: '/addcategories',
+                element: <AddCategories></AddCategories>
             },
             {
                 path: '/updateproduct/:id',

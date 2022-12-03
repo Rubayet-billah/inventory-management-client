@@ -17,7 +17,9 @@ const Header = () => {
         {
             user?.uid ? <>
                 <li><Link to='/products'>Products</Link></li>
+                <li><Link to='/categories'>Categories</Link></li>
                 <li><Link to='/addproducts'>Add Products</Link></li>
+                <li><Link to='/addcategories'>Add Categories</Link></li>
 
             </> : <>
                 <li><Link to='/login'>Login</Link></li>
@@ -38,7 +40,7 @@ const Header = () => {
                             {menu}
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost normal-case text-xl">ReSeller</Link>
+                    <Link className="btn btn-ghost normal-case text-xl">Gallery</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
