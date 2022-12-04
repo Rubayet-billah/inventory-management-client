@@ -18,7 +18,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('https://inventory-management-server-sigma.vercel.app/products')
             },
             {
                 path: '/products',
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path: '/addproducts',
                 element: <AddProducts></AddProducts>,
-                loader: () => fetch('http://localhost:5000/categories')
+                loader: () => fetch('https://inventory-management-server-sigma.vercel.app/categories')
             },
             {
                 path: '/addcategories',
@@ -40,12 +41,12 @@ const router = createBrowserRouter([
             {
                 path: '/updateproduct/:id',
                 element: <UpdateProduct></UpdateProduct>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://inventory-management-server-sigma.vercel.app/products/${params.id}`)
             },
             {
                 path: '/updatecategory/:id',
                 element: <UpdateCategory></UpdateCategory>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://inventory-management-server-sigma.vercel.app/categories/${params.id}`)
             },
             {
                 path: '/login',

@@ -8,7 +8,7 @@ const Categories = () => {
     const { data: categories, refetch } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories');
+            const res = await fetch('https://inventory-management-server-sigma.vercel.app/categories');
             const data = await res.json();
             return data
         }
@@ -17,7 +17,7 @@ const Categories = () => {
     const handleDelete = (category) => {
         const confirmation = window.confirm(`Are you sure ti delete ${category.name} category`);
         if (confirmation) {
-            fetch(`http://localhost:5000/categories/${category._id}`, {
+            fetch(`https://inventory-management-server-sigma.vercel.app/categories/${category._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

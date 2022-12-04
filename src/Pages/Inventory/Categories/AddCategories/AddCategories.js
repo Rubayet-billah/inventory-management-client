@@ -9,7 +9,7 @@ const AddCategories = () => {
         const { name, categoryId, description } = data;
         const categoryObj = { name, categoryId, description }
 
-        fetch('http://localhost:5000/categories', {
+        fetch('https://inventory-management-server-sigma.vercel.app/categories', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

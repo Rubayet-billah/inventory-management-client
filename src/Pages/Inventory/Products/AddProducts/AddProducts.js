@@ -25,7 +25,7 @@ const AddProducts = () => {
                     date: format(new Date(), 'PP'),
                     name, image: data.data.url, categoryId, price, description
                 }
-                fetch('http://localhost:5000/products', {
+                fetch('https://inventory-management-server-sigma.vercel.app/products', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

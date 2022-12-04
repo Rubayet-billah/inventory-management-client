@@ -25,14 +25,12 @@ const ChangePhoto = () => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit(handlePhoto)} className="card w-96 bg-base-100 shadow-xl">
-                <div className='card-body'>
-                    <h2 className='text-2xl text-center'>Change Photo</h2>
-                    <label className='text-sm'>New Photo</label>
-                    <input type="file" {...register('photo')} placeholder="Password" className="file-input file-input-bordered file-input-sm w-full mb-2" defaultValue={user?.displayName} />
-                    <div className="card-actions justify-end">
-                        <input type="submit" value='Change' className="btn btn-accent btn-sm" />
-                    </div>
+            <form onSubmit={handleSubmit(handlePhoto)} className="">
+                <h2 className='text-2xl text-center'>Change Photo</h2>
+                <label className='text-sm'>New Photo</label>
+                <input type="file" {...register('photo')} placeholder="Password" className="file-input file-input-bordered file-input-sm w-full mb-2" required />
+                <div className="card-actions justify-end">
+                    <input type="submit" value='Change' className="btn btn-accent btn-sm" />
                 </div>
             </form>
         </div>

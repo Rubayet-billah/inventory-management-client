@@ -15,7 +15,7 @@ const UpdateProduct = () => {
             price: newPrice,
             description: newDescription
         }
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://inventory-management-server-sigma.vercel.app/products/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

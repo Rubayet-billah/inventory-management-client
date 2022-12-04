@@ -11,7 +11,7 @@ const UpdateCategory = () => {
 
     const handleUpdate = (data) => {
         const updatedCategory = { name: data.newName, description: data.newDescription }
-        fetch(`http://localhost:5000/categories/${_id}`, {
+        fetch(`https://inventory-management-server-sigma.vercel.app/categories/${_id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
