@@ -49,7 +49,18 @@ const Header = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user?.uid ? <button onClick={handleLogout} className='btn btn-sm btn-accent btn-outline'>Logout</button> : <></>
+                        user?.uid ?
+                            <div className='md:flex items-center'>
+                                <Link to='/profile'>
+                                    <div title={user?.displayName} className="avatar">
+                                        <div className="w-8 rounded-full md:mr-2">
+                                            <img src={user?.photoURL} alt='' />
+                                        </div>
+                                    </div>
+                                </Link>
+                                <button onClick={handleLogout} className='btn btn-sm btn-accent btn-outline'>Logout</button>
+                            </div>
+                            : <></>
                     }
                 </div>
             </div>

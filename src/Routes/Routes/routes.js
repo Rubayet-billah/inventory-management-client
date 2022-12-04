@@ -7,6 +7,7 @@ import UpdateCategory from "../../Pages/Inventory/Categories/UpdateCategory/Upda
 import AddProducts from "../../Pages/Inventory/Products/AddProducts/AddProducts";
 import Products from "../../Pages/Inventory/Products/Products/Products";
 import UpdateProduct from "../../Pages/Inventory/Products/UpdateProduct/UpdateProduct";
+import UserProfile from "../../Pages/UserProfile/UserProfile";
 import Login from "../../Register/Login/Login";
 import Register from "../../Register/Register/Register";
 
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/profile',
+                element: <UserProfile></UserProfile>
             }
         ]
     }
