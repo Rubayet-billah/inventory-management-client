@@ -10,7 +10,7 @@ const Home = () => {
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-lg">
-                        <h1 className="mb-5 text-5xl font-bold">Welcome to <span className='text-accent'>GALLERY</span></h1>
+                        <h1 className="mb-5 text-5xl font-bold">Welcome to <span className='text-accent'>INVENTORY</span></h1>
                     </div>
                 </div>
             </div>
