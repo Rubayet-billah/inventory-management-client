@@ -32,7 +32,7 @@ const Products = () => {
             <h3 className='text-3xl text-center mb-5'>All Products</h3>
 
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table w-full text-center">
                     <thead>
                         <tr>
                             <th>Image</th>

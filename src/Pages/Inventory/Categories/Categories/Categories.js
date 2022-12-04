@@ -15,16 +15,19 @@ const Categories = () => {
     })
 
     const handleDelete = (category) => {
-        fetch(`http://localhost:5000/categories/${category._id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    toast.success('Category deleted successfully')
-                    refetch()
-                }
+        const confirmation = window.confirm(`Are you sure ti delete ${category.name} category`);
+        if (confirmation) {
+            fetch(`http://localhost:5000/categories/${category._id}`, {
+                method: 'DELETE'
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Category deleted successfully')
+                        refetch()
+                    }
+                })
+        }
     }
     return (
         <div>
